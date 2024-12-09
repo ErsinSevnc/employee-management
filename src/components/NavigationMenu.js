@@ -1,16 +1,35 @@
 import { html, css, LitElement } from 'lit';
 import { Router } from '@vaadin/router';
-import { translate } from '../utils/translator';
+import { translate } from '../utils/translator';  // Make sure your translator function works
+import { languageObserver } from '../utils/LanguageX';
 
+
+const routes = [
+  { name: 'home', path: '/' },
+  { name: 'addEmployee', path: '/add-employee' },
+];
 class NavigationMenu extends LitElement {
   static styles = css`
     nav {
       background-color: #FFFF;
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      flex-direction: row;
+      width: 100%;
+    }
+
+    .navbar {
       display: flex;
       padding: 30px;
+    }
+
+    .nav-items-wrapper {
+      display: flex;
+      flex: 3;
       gap: 20px;
-      width: 100%;
+    }
+
+    .multilang-wrapper {
+      flex: 1;
     }
 
     ul {
@@ -30,7 +49,7 @@ class NavigationMenu extends LitElement {
 
     a:hover {
       color: gray;
-    }
+    };
   `;
 
   static properties = {
@@ -39,22 +58,31 @@ class NavigationMenu extends LitElement {
 
   constructor() {
     super();
-    this.routes = [
-      { name: 'Home', path: '/' },
-      { name: 'Add Employee', path: '/add-employee' },
-    ];
+    this.language = languageObserver.getCurrentLanguage();
+    this.routes = routes;
+    languageObserver.autoSubscribe(this, 'language');
+  }
+
+  handleLanguageClick(lang) {
+    document.documentElement.setAttribute('lang', lang);
   }
 
   render() {
     return html`
       <nav>
-      ${this.routes.map(
-      (route) => html`
-            <div>
+        <div class="navbar">
+          <div class="nav-items-wrapper">
+            ${this.routes.map(
+              (route) => html`
                 <a href="${route.path}" @click="${(e) => this.navigate(e, route.path)}">${translate(route.name)}</a>
-            </div>
-            `
-    )}
+              `
+            )}
+          </div>
+          <div class="multilang-wrapper">
+            <button @click="${() => this.handleLanguageClick('tr')}">TR</button>
+            <button @click="${() => this.handleLanguageClick('en')}">EN</button>
+          </div>
+        </div>
       </nav>
     `;
   }

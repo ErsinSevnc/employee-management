@@ -14,7 +14,22 @@ export const translations = {
       update: 'Update',
       dateOfEmployment: 'Date Of Employment',
       dateOfBirth: 'Date Of Birth',
-      email: 'Email'
+      email: 'Email',
+      tableView: 'Table View',
+      listView: 'List View',
+      searchBarPlaceholder: 'Search Employee',
+      selectDepartment: 'Select Department',
+      selectPosition: 'Select Position',
+      yes: 'Yes',
+      no: 'No',
+      cancel: 'Cancel',
+      confirmDelete: 'Are you sure you want to delete this record ?',
+      confirmEdit: 'Are you sue you want to edit this record ?',
+      home: 'Home',
+      addEmployee: 'Add Employee',
+      next: 'Next',
+      previous: 'Previous'
+
     },
     tr: {
       employeeList: 'Çalışan Listesi',
@@ -28,10 +43,25 @@ export const translations = {
       actions: 'İşlemler',
       delete: 'Sil',
       update: 'Güncelle',
+      edit: 'Güncelle',
       dateOfEmployment: 'İş Başlangıç Tarihi',
       dateOfBirth: 'Doğum Tarihi',
       phone: 'Telefon',
-      email: 'Email'
+      email: 'Email',
+      tableView: 'Tablo Görünümü',
+      listView: 'Liste Görünümü',
+      searchBarPlaceholder: 'Çalışan Aratın',
+      selectDepartment: 'Departman Seçiniz',
+      selectPosition: 'Pozisyon Seçiniz',
+      yes: 'Evet',
+      no: 'Hayır',
+      confirmDelete: 'Bu kaydı silmek istediğinize emin misiniz ?',
+      confirmEdit: 'Bu kaydı güncellemek istediğinize emin misiniz ?',
+      cancel: 'İptal',
+      home: 'Ana Sayfa',
+      addEmployee: 'Çalışan Ekle',
+      next: 'İleri',
+      previous: 'Geri'
     },
   };
   

@@ -1,6 +1,6 @@
 const mockEmployeeData = [];
 
-const departments = ["Analytics", "Tech"];
+const departments = ["analytics", "tech"];
 const positions = ["Junior", "Medior", "Senior"];
 const names = [
   { firstName: 'John', lastName: 'Doe' },
@@ -29,7 +29,7 @@ const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 for (let i = 1; i <= 100; i++) {
   const randomName = getRandomItem(names);
-  const dateOfEmployment = `2020-01-${(i % 31) + 1}`; 
+  const dateOfEmployment = new Date(`2020-01-${(i % 31) + 1}`).getTime(); 
   const dateOfBirth = `199${(i % 10) + 1}-0${(i % 12) + 1}-${(i % 28) + 1}`;
   mockEmployeeData.push({
     id: i,
@@ -37,7 +37,7 @@ for (let i = 1; i <= 100; i++) {
     lastName: randomName.lastName,
     dateOfEmployment: dateOfEmployment,
     dateOfBirth: dateOfBirth,
-    phone: `+123456789${i}`,
+    phone: `123456789${i}`,
     email: `${randomName.firstName.toLowerCase()}${randomName.lastName.toLowerCase()}@example.com`,
     department: getRandomItem(departments),
     position: getRandomItem(positions),

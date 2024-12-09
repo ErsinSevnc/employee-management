@@ -12,16 +12,10 @@ class StateManager {
     this.state.employees = mockEmployeeData;
   }
 
-  /**
-   * @param {Function} callback
-   */
   subscribe(callback) {
     this.subscribers.push(callback);
   }
 
-  /**
-   * @param {Function} callback
-   */
   unsubscribe(callback) {
     this.subscribers = this.subscribers.filter((subscriber) => subscriber !== callback);
   }
@@ -30,44 +24,33 @@ class StateManager {
     this.subscribers.forEach((callback) => callback());
   }
 
-  /**
-   * @returns {Object}
-   */
+  getEmployee(employeeId) {
+    return this.state.employees.find(employee => employee.id === Number(employeeId));
+  }
+
   getState() {
     return this.state;
   }
 
-  /**
-   * @param {string} key
-   * @param {any} value
-   */
   setState(key, value) {
     this.state[key] = value;
     this.notify();
   }
 
-  /**
-   * @param {Object} employee
-   */
   addEmployee(employee) {
     const id = Math.max(...this.state.employees.map((e) => e.id), 0) + 1;
-    this.state.employees = [...this.state.employees, { ...employee, id }];
-    this.notify();
+    const employeeList = [...this.state.employees, { ...employee, id }];
+    this.setState('employees', employeeList);
   }
 
-  /**
-   * @param {Object} updatedEmployee
-   */
   updateEmployee(updatedEmployee) {
-    this.state.employees = this.state.employees.map((employee) =>
+    const updatedEmployees = this.state.employees.map((employee) =>
       employee.id === updatedEmployee.id ? updatedEmployee : employee
     );
-    this.notify();
-  }
 
-  /**
-   * @param {number} id
-   */
+    this.setState('employees', updatedEmployees);
+  };
+
   deleteEmployee(id) {
     this.state.employees = this.state.employees.filter((employee) => employee.id !== id);
     this.notify();
