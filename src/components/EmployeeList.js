@@ -5,6 +5,8 @@ import { languageObserver } from '../utils/LanguageX';
 import './EmployeeTable.js';
 import './EmployeeListView.js';
 import './ConfirmModal.js';
+import './svg/ListSvg.js';
+import './svg/GridSvg.js';
 
 export class EmployeeList extends LitElement {
   static styles = css`
@@ -18,6 +20,23 @@ export class EmployeeList extends LitElement {
     }
     button:hover {
       background-color: #0056b3;
+    }
+    .title{
+      color: #FF6600;
+      font-weight: 600;
+    }
+    .top-wrapper{
+      display: flex;
+      flex: 1;
+      font-size: 16px;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    .filter-and-options-wrapper{
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: stretch
     }
   `;
 
@@ -74,24 +93,30 @@ export class EmployeeList extends LitElement {
     )
   };
 
-
   render() {
     return html`
       <div>
-        <button @click="${() => (this.view = 'table')}">${translate('tableView')}</button>
-        <button @click="${() => (this.view = 'list')}">${translate('listView')}</button>
-
-        <input
-          type="text"
-          placeholder="${translate('searchBarPlaceholder')}"
-          @input="${(e) => {
-            this.searchQueryList = e.target.value;
-            this.currentPage = 1;
-          }}"
-        />
+        <div class="top-wrapper">
+          <div>
+            <span class="title">${translate('employeeList')}</span>
+          </div>
+          <div class="filter-and-options-wrapper">
+            <input
+              style="flex: 2;"
+              type="text"
+              placeholder="${translate('searchBarPlaceholder')}"
+              @input="${(e) => {
+              this.searchQueryList = e.target.value;
+              this.currentPage = 1;
+              }}"
+            />
+            <list-svg style="flex: 1;" @click="${() => (this.view = 'list')}"></list-svg>
+            <grid-svg style="flex: 1;" @click="${() => (this.view = 'table')}"></grid-svg>
+          </div>
+        </div>
 
         ${this.view === 'table'
-          ? html`
+        ? html`
               <employee-table
                 .employees="${this.paginatedEmployees}"
                 .currentPage="${this.currentPage}"
@@ -100,7 +125,7 @@ export class EmployeeList extends LitElement {
                 .onDelete="${(id) => this.openDeleteModal(id)}"
               ></employee-table>
             `
-          : html`
+        : html`
               <employee-list-view
                 .employees="${this.paginatedEmployees}"
                 .currentPage="${this.currentPage}"

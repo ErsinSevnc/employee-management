@@ -4,6 +4,7 @@ import './components/NavigationMenu';
 class MainLayout extends LitElement {
   static styles = css`
     .root {
+      height: 100%;
       display: flex;
       flex: 1;
       flex-direction: column;
@@ -12,6 +13,7 @@ class MainLayout extends LitElement {
     main {
       flex-grow: 1;
       padding: 30px;
+      background-color: rgba(0, 0, 0, 0.02);
     }
   `;
 

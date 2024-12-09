@@ -12,6 +12,7 @@ export const translations = {
       actions: 'Actions',
       delete: 'Delete',
       update: 'Update',
+      edit: 'Update',
       dateOfEmployment: 'Date Of Employment',
       dateOfBirth: 'Date Of Birth',
       email: 'Email',
@@ -28,8 +29,7 @@ export const translations = {
       home: 'Home',
       addEmployee: 'Add Employee',
       next: 'Next',
-      previous: 'Previous'
-
+      previous: 'Previous',
     },
     tr: {
       employeeList: 'Çalışan Listesi',
