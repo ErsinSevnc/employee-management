@@ -33,7 +33,7 @@ export const translations = {
       create: 'Create',
       fieldTooShort: 'Field should be more than 2 characters',
       dateInFuture: 'Selected date can not be bigger than today',
-      invalidPhone: 'Phone can only include numbers',
+      invalidPhone: 'Phone can only include numbers and should between 10 - 15 characters',
       invalidEmail: 'Please enter a valid email format'
     },
     tr: {
@@ -70,7 +70,7 @@ export const translations = {
       create: 'Oluştur',
       fieldTooShort: 'Bu alan 2 karakterden fazla olmalı',
       dateInFuture: 'Seçilen Tarih bugünün tarihinden ileri olamaz',
-      invalidPhone: 'Telefon sadece rakamlardan oluşabilir',
+      invalidPhone: 'Telefon sadece rakamlardan oluşabilir ve en az 10 en fazla 15 karakter içermeli',
       invalidEmail: 'Lütfen geçerli bir email giriniz'
     },
   };
