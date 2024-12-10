@@ -36,7 +36,9 @@ export const translations = {
       fieldTooShort: 'Field should be more than 2 characters',
       dateInFuture: 'Selected date can not be bigger than today',
       invalidPhone: 'Phone can only include numbers and should between 10 - 15 characters',
-      invalidEmail: 'Please enter a valid email format'
+      invalidEmail: 'Please enter a valid email format',
+      formErrors: 'Please provide correct inputs for form',
+      employeeAdded: 'Employee Added'
     },
     tr: {
       employeeList: 'Çalışan Listesi',
@@ -75,7 +77,9 @@ export const translations = {
       fieldTooShort: 'Bu alan 2 karakterden fazla olmalı',
       dateInFuture: 'Seçilen Tarih bugünün tarihinden ileri olamaz',
       invalidPhone: 'Telefon sadece rakamlardan oluşabilir ve en az 10 en fazla 15 karakter içermeli',
-      invalidEmail: 'Lütfen geçerli bir email giriniz'
+      invalidEmail: 'Lütfen geçerli bir email giriniz',
+      formErrors: 'Lütfen geçerli verileri giriniz',
+      employeeAdded: 'Çalışan Başarıyla Eklendi'
     },
   };
   

@@ -1,6 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { Router } from '@vaadin/router';
-import { translate } from '../utils/translator';  // Make sure your translator function works
+import { translate } from '../utils/translator';
 import { languageObserver } from '../utils/LanguageX';
 
 

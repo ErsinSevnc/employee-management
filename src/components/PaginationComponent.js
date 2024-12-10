@@ -66,10 +66,6 @@ export class PaginationComponent extends LitElement {
       ? Math.max(startPage - 5, 1)
       : Math.min(endPage + 1, this.totalPages - 4);
   
-    const nextEndPage = isLeftEllipsis 
-      ? nextStartPage + 4 
-      : Math.min(nextStartPage + 4, this.totalPages);
-  
     this.onChangePage(nextStartPage);
   }
 

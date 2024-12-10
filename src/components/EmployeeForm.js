@@ -174,7 +174,7 @@ export class EmployeeForm extends LitElement {
 
     if (this.mode === 'add') {
       stateManager.addEmployee(this.employeeData);
-      alert(translate('employee_added'));
+      alert(translate('employeeAdded'));
       Router.go('/');
     }
 
