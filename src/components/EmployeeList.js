@@ -139,7 +139,7 @@ export class EmployeeList extends LitElement {
                 .currentPage="${this.currentPage}"
                 .totalPages="${Math.ceil(this.employees.length / this.itemsPerPage)}"
                 .onChangePage="${(page) => (this.currentPage = page)}"
-                .onDelete="${(id) => this.deleteEmployee(id)}"
+                .onDelete="${(id) => this.openDeleteModal(id)}"
               ></employee-list-view>
             `}
       </div>
