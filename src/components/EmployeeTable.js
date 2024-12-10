@@ -10,33 +10,54 @@ export class EmployeeTable extends LitElement {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
     }
-    th, td {
+
+    th,
+    td {
       border-bottom: 1px solid rgba(0, 0, 0, 0.07);
       background-color: #FFFF;
       padding: 16px;
       text-transform: capitalize;
     }
+
     th {
       text-align: left;
       color: #FF6600;
       font-weight: normal;
     }
+
     td {
       color: rgba(0, 0, 0, 0.7);
     }
-    button {
+
+    th:first-child,
+    td:first-child {
+      position: sticky;
+      left: 0;
+      background-color: #FFFF;
+      z-index: 1;
+    }
+
+    .actions-wrapper {
+      display: flex;
+      gap: 8px;
+    }
+
+    .action-btn {
       cursor: pointer;
-      background-color: #007bff;
-      color: white;
+      background-color: transparent;
+      color: #FF6600;
       border: none;
       padding: 5px 10px;
+      border-radius: 10px;
     }
-    button:hover {
-      background-color: #0056b3;
+
+    .action-btn:hover {
+      background-color: rgba(0, 0, 0, 0.2);
     }
   `;
 
@@ -88,8 +109,10 @@ export class EmployeeTable extends LitElement {
                   <td>${employee.department}</td>
                   <td>${employee.position}</td>
                   <td>
-                    <button @click=${() => this.onDelete(employee.id)}>${translate('delete')}</button>
-                    <button @click="${() => Router.go(`/edit-employee?id=${employee.id}`)}">${translate('edit')}</button>
+                    <div class="actions-wrapper">
+                      <button class="action-btn" @click=${() => this.onDelete(employee.id)}>${translate('delete')}</button>
+                      <button class="action-btn" @click="${() => Router.go(`/edit-employee?id=${employee.id}`)}">${translate('edit')}</button>
+                    </div> 
                   </td>
                 </tr>
               `

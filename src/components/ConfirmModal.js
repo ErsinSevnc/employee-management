@@ -16,6 +16,7 @@ export class ConfirmModal extends LitElement {
       visibility: hidden;
       opacity: 0;
       transition: opacity 0.3s ease;
+      z-index: 100;
     }
     .modal.show {
       visibility: visible;
@@ -29,15 +30,21 @@ export class ConfirmModal extends LitElement {
       text-align: center;
     }
     .modal-content button {
-      margin: 10px;
       padding: 10px 20px;
+      margin: 8px 0;
       cursor: pointer;
     }
+    .modal-content button {
+      width: 100%;
+      border-radius: 16px;
+      border: none;
+    }
     .modal-content button.cancel {
-      background: #ccc;
+      background: #FFFF;
+      border: 1px solid gray;
     }
     .modal-content button.confirm {
-      background: #f44336;
+      background: #FF6600;
       color: white;
     }
   `;
@@ -63,30 +70,35 @@ export class ConfirmModal extends LitElement {
     this.message = message;
     this.onConfirm = onConfirm;
     this.onCancel = onCancel;
-    this.shadowRoot.querySelector('.modal').classList.add('show');
+    this.updateComplete.then(() => {
+      const modal = this.shadowRoot.querySelector('.modal');
+      if (modal) {
+        modal.classList.add('show');
+      }
+    });
   }
+
+  _handleCancel() {
+    this.onCancel();
+    this.closeModal();
+  };
+
+  _handleConfirm() {
+    this.onConfirm();
+    this.closeModal();
+  };
 
   render() {
     return html`
       <div class="modal">
         <div class="modal-content">
           <p>${this.message}</p>
-          <button class="cancel" @click="${this._handleCancel}">${translate('cancel')}</button>
           <button class="confirm" @click="${this._handleConfirm}">${translate('yes')}</button>
+          <button class="cancel" @click="${this._handleCancel}">${translate('cancel')}</button>
         </div>
       </div>
     `;
-  }
-
-  _handleCancel() {
-    this.onCancel();
-    this.closeModal();
-  }
-
-  _handleConfirm() {
-    this.onConfirm();
-    this.closeModal();
-  }
+  };
 }
 
 customElements.define('confirm-modal', ConfirmModal);

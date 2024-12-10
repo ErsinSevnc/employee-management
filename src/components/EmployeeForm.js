@@ -9,34 +9,51 @@ import { languageObserver } from '../utils/LanguageX.js';
 
 export class EmployeeForm extends LitElement {
   static styles = css`
+    .form-wrapper {
+      max-width: 50%;
+      background-color: #FFFF;
+      padding: 24px;
+      box-shadow: 2px 3px 4px 3px rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      margin: 0 auto;
+    }
     form {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      max-width: 400px;
-      margin: 0 auto;
+      justify-content: center;
     }
     label {
       font-weight: bold;
+      color: #172B53;
     }
     input, select, button {
       padding: 8px;
       font-size: 16px;
+      border-radius: 16px;
+      border: 1px solid gray;
     }
     button {
-      background-color: #007bff;
+      background-color: #FF6600;
+      border-radius: 16px;
+      margin-top: 16px;
       color: white;
       border: none;
       cursor: pointer;
     }
     button:hover {
-      background-color: #0056b3;
+      background-color: #172B53;
     }
     .error {
       color: red;
       font-size: 12px;
       margin-top: -8px;
       margin-bottom: 10px;
+    }
+    @media (max-width: 768px) {
+      .form-wrapper {
+        max-width: 80%;
+      }
     }
   `;
 
@@ -99,7 +116,7 @@ export class EmployeeForm extends LitElement {
     switch (name) {
       case 'firstName':
       case 'lastName':
-        if (value.length < 2) {
+        if (value.length < 3) {
           errors[name] = translate('fieldTooShort');
         } else {
           delete errors[name];
@@ -133,7 +150,7 @@ export class EmployeeForm extends LitElement {
         break;
       case 'department':
       case 'position':
-          delete errors[name];
+        delete errors[name];
         break;
       default:
         break;
@@ -179,7 +196,8 @@ export class EmployeeForm extends LitElement {
 
   render() {
     return html`
-      <h2>${this.mode === 'add' ? translate('add_employee') : translate('edit_employee')}</h2>
+      <h2 style="color: #FF6600;">${this.mode === 'add' ? translate('addEmployee') : translate('editEmployee')}</h2>
+      <div class="form-wrapper">
       <form @submit="${this.handleSubmit}">
         ${this.renderField('firstName', 'text')}
         ${this.renderField('lastName', 'text')}
@@ -194,6 +212,7 @@ export class EmployeeForm extends LitElement {
           ${this.mode === 'add' ? translate('create') : translate('update')}
         </button>
       </form>
+      </div>
 
       <confirm-modal></confirm-modal>
     `;
@@ -228,9 +247,9 @@ export class EmployeeForm extends LitElement {
       >
         <option value="" disabled>${translate('select' + name)}</option>
         ${options.map(
-          (option) =>
-            html`<option value="${option.key}">${option.label}</option>`
-        )}
+      (option) =>
+        html`<option value="${option.key}">${option.label}</option>`
+    )}
       </select>
       ${this.errors[name]
         ? html`<div class="error">${this.errors[name]}</div>`

@@ -23,8 +23,8 @@ export class PaginationComponent extends LitElement {
       color: white;
     }
     .page-button {
-      margin: 0 5px;
-      padding: 5px 10px;
+      margin: 0 2px;
+      padding: 5px 8px;
       cursor: pointer;
       background-color: transparent;
       color: black;
@@ -85,8 +85,7 @@ export class PaginationComponent extends LitElement {
           ${translate('previous')}
         </button>
 
-        ${startPage > 1 ? html`<button class="page-button" @click="${() => this.onChangePage(1)}">1</button>` : ''}
-        
+        ${startPage > 1 ? html`<button class="page-button" @click="${() => this.onChangePage(1)}">1</button>` : ''} 
         ${startPage > 2 ? html`<span class="ellipsis" @click="${() => this.handleEllipsisClick(true)}">...</span>` : ''}
         
         ${Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i).map(
@@ -101,7 +100,6 @@ export class PaginationComponent extends LitElement {
         )}
 
         ${endPage < this.totalPages - 1 ? html`<span class="ellipsis" @click="${() => this.handleEllipsisClick(false)}">...</span>` : ''}
-        
         ${endPage < this.totalPages ? html`<button class="page-button" @click="${() => this.onChangePage(this.totalPages)}">${this.totalPages}</button>` : ''}
 
         <button

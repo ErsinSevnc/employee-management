@@ -18,26 +18,29 @@ class NavigationMenu extends LitElement {
 
     .navbar {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 30px;
     }
 
     .nav-items-wrapper {
       display: flex;
-      flex: 3;
       gap: 20px;
     }
 
     .multilang-wrapper {
-      flex: 1;
+      text-align: right;
+    }
+    
+    .lang-btn {
+      border: none;
+      background-color: transparent;
+      color: #FF6600;
+      cursor: pointer;
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    li {
-      margin-bottom: 10px;
+    .active {
+      text-decoration: underline;
     }
 
     a {
@@ -66,6 +69,11 @@ class NavigationMenu extends LitElement {
     document.documentElement.setAttribute('lang', lang);
   }
 
+  navigate(event, path) {
+    event.preventDefault();
+    Router.go(path);
+  }
+
   render() {
     return html`
       <nav>
@@ -78,18 +86,13 @@ class NavigationMenu extends LitElement {
             )}
           </div>
           <div class="multilang-wrapper">
-            <button @click="${() => this.handleLanguageClick('tr')}">TR</button>
-            <button @click="${() => this.handleLanguageClick('en')}">EN</button>
+            <button class="lang-btn ${this.language === 'tr' && 'active'}" @click="${() => this.handleLanguageClick('tr')}">TR</button>
+            <button class="lang-btn ${this.language === 'en' && 'active'}" @click="${() => this.handleLanguageClick('en')}">EN</button>
           </div>
         </div>
       </nav>
     `;
   }
-
-  navigate(event, path) {
-    event.preventDefault();
-    Router.go(path);
-  }
-}
+};
 
 customElements.define('navigation-menu', NavigationMenu);

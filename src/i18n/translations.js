@@ -30,6 +30,11 @@ export const translations = {
       addEmployee: 'Add Employee',
       next: 'Next',
       previous: 'Previous',
+      create: 'Create',
+      fieldTooShort: 'Field should be more than 2 characters',
+      dateInFuture: 'Selected date can not be bigger than today',
+      invalidPhone: 'Phone can only include numbers',
+      invalidEmail: 'Please enter a valid email format'
     },
     tr: {
       employeeList: 'Çalışan Listesi',
@@ -61,7 +66,12 @@ export const translations = {
       home: 'Ana Sayfa',
       addEmployee: 'Çalışan Ekle',
       next: 'İleri',
-      previous: 'Geri'
+      previous: 'Geri',
+      create: 'Oluştur',
+      fieldTooShort: 'Bu alan 2 karakterden fazla olmalı',
+      dateInFuture: 'Seçilen Tarih bugünün tarihinden ileri olamaz',
+      invalidPhone: 'Telefon sadece rakamlardan oluşabilir',
+      invalidEmail: 'Lütfen geçerli bir email giriniz'
     },
   };
   
