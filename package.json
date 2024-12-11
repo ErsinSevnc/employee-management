@@ -30,7 +30,7 @@
     "test:prod": "cross-env MODE=prod wtr",
     "test:prod:watch": "MODE=prod wtr --watch",
     "checksize": "rollup -c ; cat my-element.bundled.js | gzip -9 | wc -c ; rm my-element.bundled.js",
-    "postinstall": "npx playwright install"
+    "postinstall": "npx playwright install && npx playwright install-deps"
   },
   "keywords": [
     "web-components",
