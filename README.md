@@ -6,7 +6,15 @@ Within the folder structure you will ses "src" folder. Inside of this src folder
 
 I also changed the "serve" command inside package.json to look up index.html file always to prevent page loss during refresh since we do not have Nginx to configure this.
 
-Please also note that, every running mode like prod and development is tested before pushing to main branc and code freezed.
+Please also note that, every running mode like prod and development is tested before pushing to main branch and code freezed.
+
+## Cross-env
+
+I included cross-env package to run application OS-free. Both test and serve scripts have corss-env support.
+
+## Playwright support
+
+Since playwright and browser dependencies can not be loaded by "npm install playwright" command, postinstall script added to cover playwright dependencies.
 
 
 ## Before running in any mode
