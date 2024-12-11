@@ -19,7 +19,7 @@ Since playwright and browser dependencies can not be loaded by "npm install play
 
 ## Before running in any mode
 ````bash
-npm run install
+npm install
 ````
 
 
